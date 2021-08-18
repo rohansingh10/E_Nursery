@@ -1,0 +1,101 @@
+﻿@model System.Collections.ArrayList
+@{ ViewBag.Title = "B_varietyAvailableNursery";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+    List<E_Nursery.Models.NurseryAccount> list1 = (List<E_Nursery.Models.NurseryAccount>)Model[0];
+    List<E_Nursery.Models.NurseryInventory> list2 = (List<E_Nursery.Models.NurseryInventory>)Model[1];
+    var ResultList = (from t1 in list1
+                      join t2 in list2 on t1.NurseryID equals t2.NurseryID
+                      where (t2.variety == "B" && t2.PlantName == ViewBag.Data)
+                      select new
+                      {
+                          Nurseryname = t1.NurseryName,
+                          MapLocation = t1.MapLocation,
+                          WorkingHour = t1.WorkingHour,
+                          Address = t1.Address,
+                          Pincode = t1.Pincode,
+                          stock = t2.stock,
+                          InventoryID = t2.InventoryID
+                      }
+    ); }
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: seagreen;
+            color: white;
+        }
+
+    .center {
+        text-align: center;
+    }
+</style>
+<br />
+<div class="center">
+    <h2>B_varietyAvailableNursery</h2>
+    </div>
+    <table class="table" id="customers">
+        <tr>
+            <th>
+                Nursery Name
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Working Hour
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Pincode
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in ResultList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nurseryname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MapLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkingHour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pincode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock)
+                </td>
+                <td>
+                    @Html.ActionLink("Buy", "Buy", new { id = item.InventoryID })
+                </td>
+            </tr>
+        }
+    </table>

@@ -1,0 +1,81 @@
+﻿@model E_Nursery.Models.NurseryInventory
+
+@{
+    ViewBag.Title = "DeleteInventory";
+    Layout = "~/Views/Shared/NurseryLayout.cshtml";
+}
+
+<h2>DeleteInventory</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NurseryInventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NurseryAccount.NurseryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NurseryAccount.NurseryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlantName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlantName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.variety)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.variety)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.origin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.origin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.season)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.season)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "InventoryDetails")
+        </div>
+    }
+</div>

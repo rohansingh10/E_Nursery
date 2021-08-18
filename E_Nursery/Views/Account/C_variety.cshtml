@@ -1,0 +1,86 @@
+﻿@model IEnumerable<E_Nursery.Models.NurseryInventory>
+@{
+    ViewBag.Title = "A_variety";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+    var plantdetails = (from NI in Model
+                        select new
+                        {
+                            PlantName = NI.PlantName,
+                            Description = NI.Description,
+                            Season = NI.season,
+                            variety = NI.variety
+                        }).ToList().Distinct();
+}
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: seagreen;
+            color: white;
+        }
+
+    .center {
+        text-align: center;
+    }
+</style>
+<br />
+<div class="center">
+    <h2>C_variety</h2>
+    </div>
+    <table class="table" id="customers">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PlantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.season)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in plantdetails)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlantName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Season)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Show Available Nursery", "C_varietyAvailableNursery", new { s = item.PlantName }) |
+                </td>
+            </tr>
+        }
+    </table>

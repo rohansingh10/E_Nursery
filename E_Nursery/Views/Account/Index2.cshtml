@@ -1,0 +1,104 @@
+﻿@model IEnumerable<E_Nursery.Models.NurseryAccount>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: seagreen;
+            color: white;
+        }
+
+    .center {
+        text-align: center;
+    }
+</style>
+<br />
+<div class="center">
+
+    <h2>Nursery Database</h2>
+    </div>
+    <table class="table" id="customers">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NurseryName)
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkingHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoginID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NurseryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MapLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkingHour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoginID)
+                </td>
+                <td>
+                    ************
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Deny", "DenyN/" + item.NurseryID)
+                </td>
+                <td>
+                    @Html.ActionLink("Approve", "ApproveN/" + item.NurseryID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "AManageNurseryProfile", new { id = item.NurseryID })
+                </td>
+            </tr>
+        }
+
+    </table>

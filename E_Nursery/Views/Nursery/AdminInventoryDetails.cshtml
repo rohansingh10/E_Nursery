@@ -1,0 +1,102 @@
+﻿@model IEnumerable<E_Nursery.Models.NurseryInventory>
+
+@{
+    ViewBag.Title = "AdminInventoryDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: seagreen;
+            color: white;
+        }
+
+    .center {
+        text-align: center;
+    }
+</style>
+<br />
+<div class="center">
+    <h2>InventoryDetails</h2>
+    </div>
+    <p>
+        @Html.ActionLink("Add Inventory", "ACreateInventory", "Nursery")
+
+    </p>
+    <table class="table" id="customers">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PlantName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.variety)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.season)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlantName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.variety)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.season)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock)
+                </td>
+                <td>
+                <td>
+                    @Html.ActionLink("Edit", "AEditInventory", new { id = item.InventoryID }) |
+                    @Html.ActionLink("Delete", "ADeleteInventory", new { id = item.InventoryID })
+                </td>
+                </td>
+            </tr>
+        }
+
+    </table>

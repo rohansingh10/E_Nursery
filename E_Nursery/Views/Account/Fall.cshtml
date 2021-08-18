@@ -1,0 +1,56 @@
+﻿@model IPagedList<E_Nursery.Models.NurseryInventory>
+@using PagedList.Mvc;
+@using PagedList;
+@{ ViewBag.Title = "Fall";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+    var plantdetails = (from NI in Model
+                        select new
+                        {
+                            PlantName = NI.PlantName,
+                            Description = NI.Description,
+                            Variety = NI.variety,
+                            Origin = NI.origin
+                        }).ToList().Distinct();
+
+
+    }
+<h2>Fall</h2>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().PlantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().variety)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().origin)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in plantdetails)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Variety)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Origin)
+            </td>
+      
+            <td>
+                @Html.ActionLink("Show Available Nursery", "FallAvailableNursery", new { s = item.PlantName }) |
+            </td>
+        </tr>}
+</table>
+@Html.PagedListPager(Model, i => Url.Action("Fall", "Account", new { i, s = "Fall" }))

@@ -1,0 +1,106 @@
+﻿@model E_Nursery.Models.NurseryAccount
+@{ ViewBag.Title = "NLogin";
+    Layout = null; }
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    body {
+        background-image: url('https://wtop.com/wp-content/uploads/2019/06/garden-center.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-size: 100% 200%;
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    .button {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        background-color: greenyellow;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    .loginbox {
+        margin: 30px;
+        background-color: ghostwhite;
+        opacity: 0.8;
+    }
+
+    .center {
+        text-align: center;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div style="width:700px; margin:0 auto;" class="loginbox">
+        <div class="form-horizontal">
+            <div class="center">
+                <h2>E-Nursery Login</h2>
+                <h3>NurseryAccount</h3>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.Message != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-10">@ViewBag.Message</div>
+                </div>
+                    <br />}
+
+            <div class="form-group">
+                <h2>Login ID</h2>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LoginID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LoginID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h2>Password</h2>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="button">Login</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            @Html.ActionLink("Forgot Password?", "UserPass")
+        </div>
+        <br>
+        <div>
+            @Html.ActionLink("Register If It's A New Nursery", "NRegister")
+        </div>
+        <br />
+        <div>@Html.ActionLink("Login As", "LoginAs")</div>
+    </div>}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

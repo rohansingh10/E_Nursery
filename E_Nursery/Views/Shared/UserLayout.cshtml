@@ -1,0 +1,24 @@
+﻿@{
+
+    Layout = null;
+}
+<style>
+    table#tab1 {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<table id="tab1">
+
+    <tr>
+        <td style="width:100%">@Html.Partial("UserHeader")</td>
+    </tr>
+    <tr>
+        <td>@RenderBody()</td>
+    </tr>
+    <tr>
+        <td>@Html.Partial("UserFooter")</td>
+    </tr>
+</table>
+

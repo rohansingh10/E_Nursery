@@ -1,0 +1,120 @@
+﻿
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .center {
+        text-align: center;
+    }
+</style>
+<header>
+
+    <h1><img class="center" src="https://i.pinimg.com/originals/e8/88/d4/e888d4feff8fd5ff63a965471a94b874.gif" height="40" width="40" />E-Nursery</h1>
+    <hr />
+    <div class="center">
+        <table>
+            <tr>
+                <td>
+                    Notifications:
+                </td>
+                <td>
+                    @if (ViewBag.Description != null)
+                    {
+                    <marquee>@ViewBag.Description</marquee>
+                    }
+                </td>
+            </tr>
+        </table>
+        @if (ViewBag.Data != null)
+        {
+        <b>Welcome @ViewBag.Data</b>
+        }
+    </div>
+    <hr />
+    <nav>
+
+
+
+        @*<button type="button" data-toggle="dropdown">
+                Search By Category
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item">@Html.ActionLink("A", "A_variety", new { s = "A" }, "Account")</a>
+                <a class="dropdown-item">@Html.ActionLink("B", "B_variety", new { s = "B" }, "Account")</a>
+                <a class="dropdown-item">@Html.ActionLink("C", "C_variety", new { s = "C" }, "Account")</a>
+                <a class="dropdown-item">@Html.ActionLink("D", "D_variety", new { s = "D" }, "Account")</a>
+            </div>*@
+            <table>
+                <tr>
+                    <td>
+                        <button lass="btn btn-primary dropdown-toggle" type="button" >
+                            @Html.ActionLink("Home", "LoggedIn", "Account")
+                        </button>
+                    </td>
+                    <td>
+                        <button lass="btn btn-primary dropdown-toggle" type="button" >
+                            @Html.ActionLink("Search Nearby Nursery", "Nearby", new { id = Session["UserID"] }, "Account")
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" data-toggle="dropdown">
+                            Search By Season
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item">@Html.ActionLink("Spring", "Spring", new { s = "Spring" }, "Account")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Summer", "Summer", new { s = "Summer" }, "Account")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Fall", "Fall", new { s = "Fall" }, "Account")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Winter", "Winter", new { s = "Winter" }, "Account")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Non Seasonal", "Nonseasonal", new { s = "NA" }, "Account")</a>
+                        </div>
+        @*<div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Search By Category
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("A", "A_variety", new { s = "A" }, "Account")</li>
+                    <li>@Html.ActionLink("B", "B_variety", new { s = "B" }, "Account")</li>
+                    <li>@Html.ActionLink("C", "C_variety", new { s = "C" }, "Account")</li>
+                    <li>@Html.ActionLink("D", "D_variety", new { s = "D" }, "Account")</li>
+                </ul>
+            </div>*@
+        </td>
+        <td>
+            <button type="button" data-toggle="dropdown">
+                Search By Category
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item">@Html.ActionLink("A", "A_variety", new { s = "A" }, "Account")</a>
+                <a class="dropdown-item">@Html.ActionLink("B", "B_variety", new { s = "B" }, "Account")</a>
+                <a class="dropdown-item">@Html.ActionLink("C", "C_variety", new { s = "C" }, "Account")</a>
+                <a class="dropdown-item">@Html.ActionLink("D", "D_variety", new { s = "D" }, "Account")</a>
+            </div>
+            @*<div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Search By Season
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Spring", "Spring", new { s = "Spring" }, "Account")</li>
+                    <li>@Html.ActionLink("Summer", "Summer", new { s = "Summer" }, "Account")</li>
+                    <li>@Html.ActionLink("Fall", "Fall", new { s = "Fall" }, "Account")</li>
+                    <li>@Html.ActionLink("Winter", "Winter", new { s = "Winter" }, "Account")</li>
+                </ul>
+            </div>*@
+        </td>
+                    </tr>
+        </table>     
+        
+            <button type="button" style="float: right">@Html.ActionLink("Logout", "Logout", "Account")</button>
+        
+            <button type="button" style="float:right">@Html.ActionLink("Manage User Profile", "ManageUserProfile", new { id = Session["UserID"] }, "Account")</button>
+            <button type="button" style="float: right">@Html.ActionLink("Feedbacks", "ViewFeed", "Account")</button>
+            <button type="button" style="float: right">@Html.ActionLink("Articles", "ViewArticle", "Account")</button>
+               
+    </nav>
+</header>

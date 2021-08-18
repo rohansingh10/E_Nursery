@@ -1,0 +1,50 @@
+﻿@model E_Nursery.Models.NurseryAccount
+
+@{
+    ViewBag.Title = "NurseryPass";
+    Layout = null;
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h1>Nursery Password Recovery</h1>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+
+        <div class="form-group">
+            <h4>Enter Nursery LoginID</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LoginID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LoginID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>What Is Your Favourite Plant?</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PasswordRecoveryQuestion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PasswordRecoveryQuestion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

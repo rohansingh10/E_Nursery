@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "NLoggedIn";
+    Layout = "~/Views/Shared/NurseryLayout.cshtml";
+}
+
+<style>
+    .center {
+        text-align: center;
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NLogin</title>
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <div>
+        <div class="center">
+            @if (ViewBag.Message != null)
+            {
+                <h3>@ViewBag.Message</h3>
+            }
+        </div>
+    </div>
+</body>
+</html>
